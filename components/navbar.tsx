@@ -98,7 +98,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-border/60 bg-background md:hidden">
+        <div className="border-t border-border/60 bg-[#FAF7F2] shadow-lg md:hidden">
           <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4">
             {navLinks.map((link) => {
               const isActive = active === link.id
