@@ -11,6 +11,42 @@ const navLinks = [
   { label: "Newsletter", href: "#newsletter", id: "newsletter" },
 ]
 
+const announcements = [
+  "🐾 Free shipping on orders over $55 — Australia-wide",
+  "🌿 All-natural ingredients. No preservatives. No nasties.",
+  "🏠 Handmade in small batches in Melbourne",
+]
+
+function AnnouncementBar() {
+  const [current, setCurrent] = useState(0)
+  const [fading, setFading] = useState(false)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFading(true)
+      setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % announcements.length)
+        setFading(false)
+      }, 400)
+    }, 3500)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div className="bg-[#1E1610] px-4 py-2.5 text-center">
+      <p
+        style={{
+          opacity: fading ? 0 : 1,
+          transition: "opacity 0.4s ease",
+        }}
+        className="text-xs font-semibold tracking-wide text-[#FAF6EF] md:text-sm"
+      >
+        {announcements[current]}
+      </p>
+    </div>
+  )
+}
+
 export function Navbar() {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState<string>("")
@@ -34,6 +70,8 @@ export function Navbar() {
   }, [])
 
   return (
+    <>
+      <AnnouncementBar />
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
         <a href="#" className="flex items-center gap-2">
@@ -141,5 +179,6 @@ export function Navbar() {
         </div>
       )}
     </header>
+    </>
   )
 }
