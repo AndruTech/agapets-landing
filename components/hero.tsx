@@ -61,7 +61,7 @@ function FloatingPaws() {
         >
           <PawPrint
             style={{ width: paw.size, height: paw.size }}
-            className="text-primary"
+            className="text-gray-300"
           />
         </div>
       ))}

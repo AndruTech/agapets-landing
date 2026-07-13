@@ -45,7 +45,7 @@ export function Newsletter() {
             <Button
               type="submit"
               size="lg"
-              className="h-12 rounded-full bg-foreground px-8 text-base text-background hover:bg-foreground/90"
+              className="h-12 rounded-full bg-white px-8 text-base text-black hover:bg-foreground/90 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
             >
               Subscribe
             </Button>

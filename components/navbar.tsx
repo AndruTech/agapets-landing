@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { Instagram, MessageCircle, Menu, X, PawPrint } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 const navLinks = [
   { label: "Products", href: "#products", id: "products" },
@@ -72,113 +72,134 @@ export function Navbar() {
   return (
     <>
       <AnnouncementBar />
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
-        <a href="#" className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground">
-            <PawPrint className="h-5 w-5" />
-          </span>
-          <span className="font-serif text-2xl font-semibold tracking-tight text-foreground">Agapets</span>
-        </a>
+      <header className="sticky top-0 z-50 border-b border-border/60 bg-white/90 backdrop-blur-md">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6">
 
-        <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => {
-            const isActive = active === link.id
-            return (
-              <a
-                key={link.label}
-                href={link.href}
-                aria-current={isActive ? "true" : undefined}
-                className={cn(
-                  "border-b-2 pb-1 text-sm font-semibold transition-colors",
-                  isActive
-                    ? "border-primary text-primary"
-                    : "border-foreground/25 text-foreground hover:border-primary hover:text-primary",
-                )}
-              >
-                {link.label}
-              </a>
-            )
-          })}
-        </div>
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-2.5">
+            <Image
+              src="/AGAPETS_LOGO_SIN_FONDO.png"
+              alt="Agapets Treats"
+              width={200}
+              height={200}
+              className="h-40 w-auto object-contain"
+            />
+          </a>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <Button
-            asChild
-            variant="outline"
-            className="h-auto flex-col gap-1 rounded-xl border-foreground/20 bg-transparent px-4 py-2 text-foreground hover:border-primary hover:text-primary"
-          >
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">
-              <Instagram className="h-6 w-6" />
-              <span className="text-xs font-semibold">Instagram</span>
-            </a>
-          </Button>
-          <Button
-            asChild
-            className="h-auto flex-col gap-1 rounded-xl px-4 py-2"
-          >
-            <a href="https://wa.me/61400000000" target="_blank" rel="noreferrer">
-              <MessageCircle className="h-6 w-6" />
-              <span className="text-xs font-semibold">WhatsApp</span>
-            </a>
-          </Button>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-full text-foreground md:hidden"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </nav>
-
-      {open && (
-        <div className="border-t border-border/60 bg-[#FAF7F2] shadow-lg md:hidden">
-          <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4">
+          {/* Nav links — desktop */}
+          <div className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => {
               const isActive = active === link.id
               return (
                 <a
                   key={link.label}
                   href={link.href}
-                  onClick={() => setOpen(false)}
-                  aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "rounded-lg border-l-4 px-3 py-2.5 text-base font-semibold transition-colors",
+                    "text-sm font-medium transition-colors",
                     isActive
-                      ? "border-primary bg-secondary text-primary"
-                      : "border-transparent text-foreground hover:bg-secondary",
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground",
                   )}
                 >
                   {link.label}
                 </a>
               )
             })}
-            <div className="mt-3 grid grid-cols-2 gap-2">
-              <Button
-                asChild
-                variant="outline"
-                className="h-auto flex-col gap-1 rounded-xl border-foreground/20 bg-transparent py-3 text-foreground"
-              >
-                <a href="https://instagram.com" target="_blank" rel="noreferrer">
-                  <Instagram className="h-6 w-6" />
-                  <span className="text-xs font-semibold">Instagram</span>
+          </div>
+
+          {/* Social icons — desktop */}
+          <div className="hidden items-center gap-1 md:flex">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="flex h-9 w-9 items-center justify-center rounded-full text-foreground/60 transition-colors hover:bg-secondary hover:text-foreground"
+            >
+              <Instagram className="h-5 w-5" />
+            </a>
+            <a
+              href="https://wa.me/61400000000"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="WhatsApp"
+              className="flex h-9 w-9 items-center justify-center rounded-full text-foreground/60 transition-colors hover:bg-secondary hover:text-foreground"
+            >
+              <MessageCircle className="h-5 w-5" />
+            </a>
+            <a
+              href="#products"
+              className="ml-2 inline-flex items-center gap-1.5 rounded-full bg-foreground px-5 py-2 text-sm font-semibold text-background transition-opacity hover:opacity-80"
+            >
+              Shop now
+            </a>
+          </div>
+
+          {/* Hamburger — mobile */}
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-10 w-10 items-center justify-center rounded-full text-foreground md:hidden"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </nav>
+
+        {/* Mobile menu */}
+        {open && (
+          <div className="border-t border-border/60 bg-white md:hidden">
+            <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4">
+              {navLinks.map((link) => {
+                const isActive = active === link.id
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className={cn(
+                      "rounded-lg px-3 py-2.5 text-base font-medium transition-colors",
+                      isActive
+                        ? "bg-secondary text-foreground"
+                        : "text-muted-foreground hover:bg-secondary hover:text-foreground",
+                    )}
+                  >
+                    {link.label}
+                  </a>
+                )
+              })}
+              <div className="mt-3 flex gap-3">
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground/60"
+                >
+                  <Instagram className="h-5 w-5" />
                 </a>
-              </Button>
-              <Button asChild className="h-auto flex-col gap-1 rounded-xl py-3">
-                <a href="https://wa.me/61400000000" target="_blank" rel="noreferrer">
-                  <MessageCircle className="h-6 w-6" />
-                  <span className="text-xs font-semibold">WhatsApp</span>
+                <a
+                  href="https://wa.me/61400000000"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="WhatsApp"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground/60"
+                >
+                  <MessageCircle className="h-5 w-5" />
                 </a>
-              </Button>
+                <a
+                  href="#products"
+                  onClick={() => setOpen(false)}
+                  className="flex-1 rounded-full bg-foreground py-2 text-center text-sm font-semibold text-background"
+                >
+                  Shop now
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </header>
+        )}
+      </header>
     </>
   )
 }
