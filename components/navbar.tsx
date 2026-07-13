@@ -78,7 +78,7 @@ export function Navbar() {
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5">
             <img
-              src="/AGAPETS_LOGO_SIN_FONDO.png"
+              src="/agapets-logo.png"
               alt="Agapets Treats Logo"
               width={200}
               height={200}
