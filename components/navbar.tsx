@@ -79,7 +79,7 @@ export function Navbar() {
           <a href="#" className="flex items-center gap-2.5">
             <img
               src="/AGAPETS_LOGO_SIN_FONDO.png"
-              alt="Agapets Treats"
+              alt="Agapets Treats Logo"
               width={200}
               height={200}
               className="h-40 w-auto object-contain"
