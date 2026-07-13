@@ -4,28 +4,24 @@ import { useEffect } from "react"
 
 const products = [
   {
-    emoji: "🍪",
     name: "Artisan Cookies",
     description: "Crunchy, oven-baked biscuits made with peanut butter, pumpkin and oats.",
     componentId: "product-component-1783676906526",
     shopifyId: "8403253526572",
   },
   {
-    emoji: "🍦",
     name: "Frozen Popsicles",
     description: "Cooling fruit-and-yogurt pops — the perfect treat for warm Melbourne days.",
     componentId: "product-component-1783677352429",
     shopifyId: "8403259785260",
   },
   {
-    emoji: "🟠",
     name: "Pumpkin Gummies",
     description: "Natural pumpkin and chicken broth gummies — grain-free and irresistible.",
     componentId: "product-component-1783677452241",
     shopifyId: "8403257589804",
   },
   {
-    emoji: "🎁",
     name: "Gift Boxes",
     description: "Beautifully wrapped assortments for the pampered pup in your life.",
     componentId: "product-component-giftbox",
@@ -62,9 +58,9 @@ export function Products() {
               product: {
                 styles: {
                   button: {
-                    ":hover": { "background-color": "#b06c26" },
-                    "background-color": "#c4782a",
-                    ":focus": { "background-color": "#b06c26" },
+                    ":hover": { "background-color": "#000000" },
+                    "background-color": "#000000",
+                    ":focus": { "background-color": "#706f6f" },
                     "border-radius": "40px",
                   },
                 },
@@ -73,9 +69,9 @@ export function Products() {
               cart: {
                 styles: {
                   button: {
-                    ":hover": { "background-color": "#b06c26" },
-                    "background-color": "#c4782a",
-                    ":focus": { "background-color": "#b06c26" },
+                    ":hover": { "background-color": "#000000" },
+                    "background-color": "#000000",
+                    ":focus": { "background-color": "#7c7c7b" },
                     "border-radius": "40px",
                   },
                 },
@@ -121,15 +117,12 @@ export function Products() {
             Each treat is made by hand, in small batches, right here in Melbourne.
           </p>
         </div>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 h-400">
           {products.map((product) => (
             <div
               key={product.name}
               className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-lg"
             >
-              <div className="flex h-28 items-center justify-center rounded-xl bg-secondary text-5xl">
-                <span aria-hidden="true">{product.emoji}</span>
-              </div>
               <div className="mt-5 flex flex-1 flex-col">
                 <h3 className="font-serif text-xl font-semibold text-foreground">
                   {product.name}
