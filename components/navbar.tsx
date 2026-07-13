@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Instagram, MessageCircle, Menu, X, PawPrint } from "lucide-react"
 import { cn } from "@/lib/utils"
-import Image from "next/image"
+
 
 const navLinks = [
   { label: "Products", href: "#products", id: "products" },
@@ -77,7 +77,7 @@ export function Navbar() {
 
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5">
-            <Image
+            <img
               src="/AGAPETS_LOGO_SIN_FONDO.png"
               alt="Agapets Treats"
               width={200}
